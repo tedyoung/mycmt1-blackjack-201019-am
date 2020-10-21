@@ -20,6 +20,14 @@ public class HandValueAceTest {
   }
 
   @Test
+  public void handWithOneAceAndOtherCardsValuedAt10AceIsValuedAt11() throws Exception {
+    Hand hand = createHand("A", "10");
+
+    assertThat(hand.valueEquals(11 + 10))
+        .isTrue();
+  }
+
+  @Test
   public void handWithOneAceAndOtherCardsEqualTo11IsValuedAt1() throws Exception {
     Hand hand = createHand("A", "8", "3");
 
