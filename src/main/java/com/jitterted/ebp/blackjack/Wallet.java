@@ -17,13 +17,24 @@ public class Wallet {
     balance += amount;
   }
 
-  private void requireNonZeroAmount(int amount) {
-    if (amount == 0) {
+  public int balance() {
+    return balance;
+  }
+
+  public void bet(int betAmount) {
+    requireBalanceGreaterThanOrEqualTo(betAmount);
+    balance -= betAmount;
+  }
+
+  private void requireBalanceGreaterThanOrEqualTo(int betAmount) {
+    if (betAmount > balance) {
       throw new IllegalArgumentException();
     }
   }
 
-  public int balance() {
-    return balance;
+  private void requireNonZeroAmount(int amount) {
+    if (amount == 0) {
+      throw new IllegalArgumentException();
+    }
   }
 }
